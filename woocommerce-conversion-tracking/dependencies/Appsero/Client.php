@@ -1,9 +1,9 @@
 <?php
 
-namespace Appsero;
+namespace WeDevs_WC_Conversion_Tracking\Dependencies\Appsero;
 
 /**
- * Appsero Client
+ * WeDevs_WC_Conversion_Tracking\Dependencies\Appsero Client
  *
  * This class is necessary to set project data
  */
@@ -110,7 +110,7 @@ class Client {
     /**
      * Initialize insights class
      *
-     * @return Appsero\Insights
+     * @return WeDevs_WC_Conversion_Tracking\Dependencies\Appsero\Insights
      */
     public function insights() {
         if ( ! class_exists( __NAMESPACE__ . '\Insights' ) ) {
@@ -139,18 +139,18 @@ class Client {
         }
 
         // show deprecated notice
-        _deprecated_function( __CLASS__ . '::updater', '2.0', '\Appsero\Updater::init($client);, for more details please visit: https://appsero.com/docs/appsero-developers-guide/appsero-client/appsero-sdk-updater-changes/' );
+        _deprecated_function( __CLASS__ . '::updater', '2.0', '\WeDevs_WC_Conversion_Tracking\Dependencies\Appsero\Updater::init($client);, for more details please visit: https://appsero.com/docs/appsero-developers-guide/appsero-client/appsero-sdk-updater-changes/' );
 
         // initialize the new updater
-        if ( method_exists( '\Appsero\Updater', 'init' ) ) {
-            \Appsero\Updater::init( $this );
+        if ( method_exists( '\WeDevs_WC_Conversion_Tracking\Dependencies\Appsero\Updater', 'init' ) ) {
+            \WeDevs_WC_Conversion_Tracking\Dependencies\Appsero\Updater::init( $this );
         }
     }
 
     /**
      * Initialize license checker
      *
-     * @return Appsero\License
+     * @return WeDevs_WC_Conversion_Tracking\Dependencies\Appsero\License
      */
     public function license() {
         if ( ! class_exists( __NAMESPACE__ . '\License' ) ) {
