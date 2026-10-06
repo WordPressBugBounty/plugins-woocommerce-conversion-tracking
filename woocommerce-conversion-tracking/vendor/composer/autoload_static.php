@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1f1032ea048164652d0f57f3fc6cd595
+class ComposerStaticInit31287efaa0d2a15c8677376d87cb3624
 {
     public static $prefixLengthsPsr4 = array (
         'W' =>
@@ -14,10 +14,6 @@ class ComposerStaticInit1f1032ea048164652d0f57f3fc6cd595
         'C' =>
         array (
             'Composer\\Installers\\' => 20,
-        ),
-        'A' =>
-        array (
-            'Appsero\\' => 8,
         ),
     );
 
@@ -30,10 +26,6 @@ class ComposerStaticInit1f1032ea048164652d0f57f3fc6cd595
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
         ),
-        'Appsero\\' =>
-        array (
-            0 => __DIR__ . '/..' . '/appsero/client/src',
-        ),
     );
 
     public static $classMap = array (
@@ -43,9 +35,9 @@ class ComposerStaticInit1f1032ea048164652d0f57f3fc6cd595
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1f1032ea048164652d0f57f3fc6cd595::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1f1032ea048164652d0f57f3fc6cd595::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit1f1032ea048164652d0f57f3fc6cd595::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit31287efaa0d2a15c8677376d87cb3624::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit31287efaa0d2a15c8677376d87cb3624::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit31287efaa0d2a15c8677376d87cb3624::$classMap;
 
         }, null, ClassLoader::class);
     }

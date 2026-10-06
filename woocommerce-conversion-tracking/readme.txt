@@ -3,11 +3,11 @@ Contributors: tareq1988, wedevs
 Tags: ecommerce, e-commerce, commerce, woocommerce, tracking, facebook, google, adwords, tracking-pixel
 Donate link: https://tareq.co/donate/
 Requires at least: 5.4
-Tested up to: 6.8.2
+Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 5.0.0
-WC tested up to: 10.1.1
-Stable tag: 2.1.5
+WC tested up to: 11.1
+Stable tag: 2.1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,16 @@ This plugin inserts those codes on WooCommerce cart page, checkout success page 
 
 = Author =
 [Tareq Hasan](https://tareq.co)
+
+== External services ==
+
+This plugin connects to third-party advertising and analytics services only after you enable an integration and enter its ID on the settings page.
+
+= Google Analytics 4 =
+
+When the Google Analytics 4 integration is enabled with a Measurement ID, the plugin loads Google's gtag.js from www.googletagmanager.com on your store's pages. Google Analytics then receives the page address and referrer, with the `key` parameter removed, and the events you select: product views, add to cart, begin checkout and purchases. Event data contains product IDs, names, categories, prices, quantities, coupon codes, the order number, totals, tax, shipping and currency. No customer names, email addresses, phone numbers or addresses are sent. Google sets its own cookies and receives the visitor's IP address and browser details as part of the request.
+
+Google Analytics is provided by Google LLC: [Terms of Service](https://marketingplatform.google.com/about/analytics/terms/us/), [Privacy Policy](https://policies.google.com/privacy).
 
 == Installation ==
 
@@ -103,6 +113,13 @@ Additionally, read weDevs [privacy policy](https://wedevs.com/privacy-policy/) f
 
 
 == Changelog ==
+
+= Version 2.1.6 (06 Oct, 2026) =
+
+- **New:** Google Analytics 4 integration with view item, add to cart, begin checkout and purchase events
+- **Fix:** Deferred plugin class and translation loading to avoid early textdomain notices
+- **Update:** Improved data handling on the order received page
+- **Update:** WordPress 7.1.2 and WooCommerce 11.1.2 compatibility
 
 = Version 2.1.5 (02 Feb, 2026) =
 

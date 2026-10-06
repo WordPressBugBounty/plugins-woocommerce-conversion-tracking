@@ -3,14 +3,14 @@
 Plugin Name: Conversion Tracking for WooCommerce
 Plugin URI: https://wedevs.com/woocommerce-conversion-tracking/
 Description: Adds various conversion tracking codes to cart, checkout, registration success and product page on WooCommerce
-Version: 2.1.5
+Version: 2.1.6
 Author: weDevs
 Author URI: https://wedevs.com/?utm_source=ORG_Author_URI_WCCT
 License: GPL2
 Requires PHP: 7.4
 Requires Plugins: woocommerce
 WC requires at least: 5.0.0
-WC tested up to: 10.1.1
+WC tested up to: 11.1
 */
 
 /**
@@ -56,7 +56,7 @@ class WeDevs_WC_Conversion_Tracking {
      *
      * @var string
      */
-    public $version = '2.1.5';
+    public $version = '2.1.6';
 
     /**
      * Holds various class instances
@@ -77,7 +77,9 @@ class WeDevs_WC_Conversion_Tracking {
         $this->define_constants();
         $this->init_hooks();
         $this->includes();
-        $this->init_classes();
+
+        // Must run at load time: Appsero registers activation/deactivation hooks.
+        $this->init_tracker();
 
         register_activation_hook( __FILE__, array( $this, 'activate' ) );
 
@@ -186,12 +188,11 @@ class WeDevs_WC_Conversion_Tracking {
 
         add_action( 'plugins_loaded', array( $this, 'plugin_upgrades' ) );
         add_action( 'init', array( $this, 'localization_setup' ) );
+        add_action( 'init', array( $this, 'init_classes' ) );
 
         add_action( 'admin_notices', array( $this, 'check_woocommerce_exist' ) );
         add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_links' ) );
         add_action( 'admin_notices', array( $this, 'happy_addons_ads_banner' ) );
-
-        $this->init_tracker();
     }
 
     /**
@@ -200,10 +201,11 @@ class WeDevs_WC_Conversion_Tracking {
      * @return void
      */
     public function init_classes() {
+        // Manager must exist before the dispatcher, which reads active integrations on construct.
+        $this->container['manager']             = new WCCT_Integration_Manager();
         $this->container['ajax']                = new WCCT_Ajax();
         $this->container['event_dispatcher']    = new WCCT_Event_Dispatcher();
         $this->container['admin']               = new WCCT_Admin();
-        $this->container['manager']             = new WCCT_Integration_Manager();
 
         new WCCT_Welcome_20();
 

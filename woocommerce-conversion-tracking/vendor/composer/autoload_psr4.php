@@ -8,5 +8,4 @@ $baseDir = dirname($vendorDir);
 return array(
     'WeDevs_WC_Conversion_Tracking\\Dependencies\\' => array($baseDir . '/dependencies'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
-    'Appsero\\' => array($vendorDir . '/appsero/client/src'),
 );

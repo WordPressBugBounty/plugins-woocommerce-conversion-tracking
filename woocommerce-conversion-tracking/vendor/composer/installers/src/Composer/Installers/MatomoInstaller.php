@@ -2,12 +2,16 @@
 
 namespace Composer\Installers;
 
-class CroogoInstaller extends BaseInstaller
+/**
+ * Class MatomoInstaller
+ *
+ * @package Composer\Installers
+ */
+class MatomoInstaller extends BaseInstaller
 {
     /** @var array<string, string> */
     protected $locations = array(
-        'plugin' => 'Plugin/{$name}/',
-        'theme' => 'View/Themed/{$name}/',
+        'plugin' => 'plugins/{$name}/',
     );
 
     /**
@@ -15,7 +19,8 @@ class CroogoInstaller extends BaseInstaller
      */
     public function inflectPackageVars(array $vars): array
     {
-        $vars['name'] = strtolower(str_replace(array('-', '_'), ' ', $vars['name']));
+        $vars['name'] = strtolower($this->pregReplace('/(?<=\\w)([A-Z])/', '_\\1', $vars['name']));
+        $vars['name'] = str_replace(array('-', '_'), ' ', $vars['name']);
         $vars['name'] = str_replace(' ', '', ucwords($vars['name']));
 
         return $vars;
